@@ -8,6 +8,7 @@ import useUsuarioStore from "@/store/useUsuariosStore";
 import { Avaliacao, Comentario, Postagem, Usuario } from "@/types";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
+import Button from "./Buttons/Button";
 
 export type TipoPostagem =
   | "texto"
@@ -258,12 +259,12 @@ const PostagemComp: React.FC<Props> = ({ postagem }) => {
             ref={inputRef}
             onChange={(e) => setNovoComentario(e.target.value)}
           />
-          <button
+          <Button
             onClick={() => adicionarComentario(_id)}
             className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark text-sm"
           >
             Comentar
-          </button>
+          </Button>
         </div>
       </div>
     </div>
