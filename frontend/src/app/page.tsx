@@ -60,13 +60,13 @@ export default function Home() {
             Criar nova publicação
           </h2>
           <textarea
-            className="w-full p-2 border rounded mb-3 text-sm dark:bg-gray-900 dark:text-white dark:border-gray-600"
+            className="flex-1 border w-full border-gray-300 rounded-md px-3 py-2 text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600"
             placeholder="Escreva algo..."
             rows={3}
             value={conteudo}
             onChange={(e) => setConteudo(e.target.value)}
           />
-          <div className="flex w-full justify-between items-center">
+          <div className="flex w-full mt-4 justify-between items-center">
             <input
               type="file"
               accept="image/*,video/*"
