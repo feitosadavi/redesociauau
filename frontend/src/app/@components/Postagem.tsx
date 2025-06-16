@@ -206,7 +206,7 @@ const PostagemComp: React.FC<Props> = ({ postagem }) => {
   };
 
   return (
-    <div className="bg-white dark:text-white rounded-xl w-[50rem] shadow-md dark:bg-p dark:bg-gray-dark p-5 mb-6 border border-gray-200">
+    <div className="bg-white dark:text-white rounded-xl w-[70vw] shadow-md dark:bg-p dark:bg-gray-dark p-5 mb-6 border border-gray-200">
       <div className="flex justify-between items-center mb-3">
         <div className="flex justify-center items-center gap-2 dark:text-white text-sm text-gray-600 font-semibold">
           <div className="w-13 h-13 relative rounded-full overflow-hidden border border-gray-300">
