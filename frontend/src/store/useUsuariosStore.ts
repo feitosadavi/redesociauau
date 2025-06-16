@@ -1,3 +1,4 @@
+import { usuariosMock } from "@/api";
 import { Usuario } from "@/types";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
@@ -11,7 +12,7 @@ const useUsuarioStore = create<UsuarioStore>()(
   devtools(
     persist(
       (set) => ({
-        usuario: null,
+        usuario: usuariosMock[0],
         setUsuario: async (usuario: Usuario) => set(() => ({ usuario })),
       }),
       {
