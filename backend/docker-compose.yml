@@ -4,7 +4,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/metaai
+      DATABASE_URL: postgres://postgres:postgres@db:5433/metaai
       NODE_ENV: development # ou production
     depends_on:
       - db

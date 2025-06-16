@@ -49,6 +49,6 @@ COPY --from=builder /app/prisma ./prisma
 # Reexecuta generate para garantir compatibilidade
 RUN npx prisma generate
 
-EXPOSE 3000
+EXPOSE 4000
 
 CMD ["node", "dist/server.js"]

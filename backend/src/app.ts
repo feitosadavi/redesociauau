@@ -97,12 +97,12 @@ app.get("/health", (req, res) => {
 });
 
 // Rota para teste do Socket.io
-app.get("/socket-test", authenticate, (req, res) => {
-  io.to(`user_${req.user.id_usuario}`).emit("test", {
-    message: "Teste de conexão",
-  });
-  res.json({ message: "Teste de socket enviado" });
-});
+// app.get("/socket-test", authenticate, (req, res) => {
+//   io.to(`user_${req.user.id_usuario}`).emit("test", {
+//     message: "Teste de conexão",
+//   });
+//   res.json({ message: "Teste de socket enviado" });
+// });
 
 // Handler de erros
 app.use(errorHandler);
