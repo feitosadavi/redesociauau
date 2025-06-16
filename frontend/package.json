@@ -1,0 +1,49 @@
+{
+  "name": "admin-panel",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cloudinary": "^2.5.1",
+    "formik": "^2.4.6",
+    "fuse.js": "^7.0.0",
+    "json-edit-react": "^1.19.0",
+    "jsvectormap": "^1.5.3",
+    "mongoose": "^8.9.2",
+    "next": "^14.1.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.54.2",
+    "react-input-mask": "^2.0.4",
+    "react-quill": "^2.0.0",
+    "react-select": "^5.8.0",
+    "react-toastify": "^11.0.1",
+    "socket.io-client": "^4.8.1",
+    "swr": "^2.2.5",
+    "use-mask-input": "^3.4.2",
+    "yup": "^1.6.1",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/feather-icons": "^4.29.4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-input-mask": "^3.0.6",
+    "@types/react-table": "^7.7.19",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

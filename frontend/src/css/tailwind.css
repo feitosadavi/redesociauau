@@ -1,0 +1,11 @@
+@media (prefers-color-scheme: dark) {
+  .dark\:container {
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .dark\:container {
+      max-width: 640px;
+    }
+  }
+}
