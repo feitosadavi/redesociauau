@@ -5,36 +5,21 @@ import { prisma } from "../app";
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const { email, username, password, birthDate } = req.body;
+    const { email, nome, password, birthDate } = req.body;
 
     // Verificar se usuário já existe
     const existingUser = await prisma.usuario.findFirst({
-      where: { OR: [{ email }, { nome_usuario: username }] },
+      where: { OR: [{ email }, { nome: nome }] },
     });
 
     if (existingUser)
       res.status(400).json({ error: "Email ou nome de usuário já em uso" });
 
-    const user = await registerUser(
-      email,
-      username,
-      password,
-      new Date(birthDate)
-    );
-
-    // Criar perfil padrão
-    await prisma.perfil.create({
-      data: {
-        id_usuario: user.id_usuario,
-        bio: "",
-        localizacao: "",
-        website: "",
-      },
-    });
+    const user = await registerUser(email, nome, password, new Date(birthDate));
 
     res.status(201).json({
       id: user.id_usuario,
-      username: user.nome_usuario,
+      nome: user.nome_usuario,
       email: user.email,
     });
   } catch (error) {
@@ -51,7 +36,7 @@ export const login = async (req: Request, res: Response) => {
     res.json({
       user: {
         id: userData.id,
-        username: userData.username,
+        nome: userData.nome,
         email: userData.email,
         token: userData.token,
       },

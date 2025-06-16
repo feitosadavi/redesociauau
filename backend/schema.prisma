@@ -10,7 +10,7 @@ generator client {
 model Usuario {
   id_usuario      Int       @id @default(autoincrement())
   email           String    @unique
-  nome_usuario    String    @unique
+  nome    String    @unique
   foto_perfil     String
   data_nascimento DateTime
   tags            String
