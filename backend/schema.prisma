@@ -1,0 +1,94 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Usuario {
+  id_usuario      Int       @id @default(autoincrement())
+  email           String    @unique
+  nome_usuario    String    @unique
+  foto_perfil     String
+  data_nascimento DateTime
+  tags            String
+  mensagensEnviadas Mensagem[] @relation("mensagens_enviadas")
+  mensagensRecebidas Mensagem[] @relation("mensagens_recebidas")
+  gruposCriados   Grupo[]    @relation("grupos_criados")
+  postagens       Postagem[]
+  comentarios     Comentario[]
+  seguindo        Seguidor[] @relation("seguindo")
+  seguidores      Seguidor[] @relation("seguidores")
+  membrosGrupos   MembroGrupo[]
+}
+
+model Mensagem {
+  id_mensagem   Int      @id @default(autoincrement())
+  conteudo      String
+  enviado_por   Int
+  recebido_por  Int
+  remetente     Usuario  @relation("mensagens_enviadas", fields: [enviado_por], references: [id_usuario])
+  destinatario  Usuario  @relation("mensagens_recebidas", fields: [recebido_por], references: [id_usuario])
+  data_envio    DateTime @default(now())
+  status        String   @default("enviada")
+}
+
+model Grupo {
+  id_grupo      Int      @id @default(autoincrement())
+  nome          String   @unique
+  descricao     String
+  criado_por    Int
+  data_criacao  DateTime @default(now())
+  criador       Usuario  @relation("grupos_criados", fields: [criado_por], references: [id_usuario])
+  membros       MembroGrupo[]
+  postagens     Postagem[]
+}
+
+model MembroGrupo {
+  id_grupo    Int
+  id_usuario  Int
+  funcao      String
+  grupo       Grupo   @relation(fields: [id_grupo], references: [id_grupo])
+  usuario     Usuario @relation(fields: [id_usuario], references: [id_usuario])
+
+  @@id([id_grupo, id_usuario])
+}
+
+model Seguidor {
+  id_seguidor Int
+  id_seguido  Int
+  seguidor    Usuario @relation("seguindo", fields: [id_seguidor], references: [id_usuario])
+  seguido     Usuario @relation("seguidores", fields: [id_seguido], references: [id_usuario])
+
+  @@id([id_seguidor, id_seguido])
+}
+
+model Postagem {
+  id_postagem   Int         @id @default(autoincrement())
+  conteudo      String
+  tipo          String
+  data_criacao  DateTime    @default(now())
+  upvote        Int         @default(0)
+  downvote      Int         @default(0)
+  postado_por   Int
+  id_grupo      Int?
+  autor         Usuario     @relation(fields: [postado_por], references: [id_usuario])
+  grupo         Grupo?      @relation(fields: [id_grupo], references: [id_grupo])
+  comentarios   Comentario[]
+}
+
+model Comentario {
+  id_comentario      Int        @id @default(autoincrement())
+  conteudo           String
+  upvote             Int        @default(0)
+  downvote           Int        @default(0)
+  id_postagem        Int
+  id_usuario         Int
+  id_comentario_pai  Int?
+  postagem           Postagem   @relation(fields: [id_postagem], references: [id_postagem])
+  autor              Usuario    @relation(fields: [id_usuario], references: [id_usuario])
+  comentarioPai      Comentario? @relation("respostas", fields: [id_comentario_pai], references: [id_comentario])
+  respostas          Comentario[] @relation("respostas")
+}
