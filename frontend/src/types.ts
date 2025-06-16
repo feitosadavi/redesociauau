@@ -1,15 +1,15 @@
 // usuarios
-interface Usuario {
-  id_usuario: number;
+export interface Usuario {
+  _id: number;
   email: string;
-  nome_usuario: string;
+  nome: string;
   foto_perfil: string;
   data_nascimento: string; // ISO date string (YYYY-MM-DD)
   tags: string; // Pode ser string separada por vírgulas, ou transformar em string[]
 }
 
 // mensagens
-interface Mensagem {
+export interface Mensagem {
   id_mensagem: number;
   conteudo: string;
   enviado_por: number; // FK para usuarios.id_usuario
@@ -17,7 +17,7 @@ interface Mensagem {
 }
 
 // grupos
-interface Grupo {
+export interface Grupo {
   id_grupo: number;
   nome: string;
   descricao: string;
@@ -26,31 +26,38 @@ interface Grupo {
 }
 
 // lista_mebros_grupo
-interface ListaMembrosGrupo {
+export interface ListaMembrosGrupo {
   id_grupo: number; // FK para grupos.id_grupo
   id_usuario: number; // FK para usuarios.id_usuario
   funcao: string; // 'admin' | 'membro' idealmente, mas no banco é varchar(50)
 }
 
 // seguidores
-interface Seguidor {
+export interface Seguidor {
   id_seguidor: number; // FK para usuarios.id_usuario
   id_seguido: number; // FK para usuarios.id_usuario
 }
 
+export interface Avaliacao {
+  avaliado_por: Usuario;
+  post_id: string;
+  upvote: boolean;
+}
+
 // postagens
-interface Postagem {
+export interface Postagem {
   _id: number;
   conteudo: string;
   tipo: string; // Pode ser 'texto', 'imagem', etc.
   data_criacao: string; // ISO date
   upvote: number;
   downvote: number;
-  postado_por: number; // FK para usuarios.id_usuario
+  postado_por: Usuario; // FK para usuarios.id_usuario
+  avaliacoes?: Avaliacao[];
 }
 
 // comentarios
-interface Comentario {
+export interface Comentario {
   id_comentario: number;
   conteudo: string;
   upvote: number;

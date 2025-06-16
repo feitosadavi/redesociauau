@@ -31,7 +31,7 @@ const Conversa: React.FC = () => {
             onClick={() => toggleInfoContato()}
           >
             <div className="flex flex-col gap-1">
-              <p className="text-xl font-bold text-white">
+              <p className="text-xl font-bold text-white ">
                 {cliente.nomeCliente}
               </p>
               <p className="text-md font-bold text-gray-300">
@@ -60,7 +60,7 @@ const Conversa: React.FC = () => {
                         hour12: false,
                         hour: "2-digit",
                         minute: "2-digit",
-                      },
+                      }
                     );
                     return (
                       <div
@@ -77,7 +77,7 @@ const Conversa: React.FC = () => {
                         </p>
                       </div>
                     );
-                  },
+                  }
                 )}
               </React.Fragment>
             ))}

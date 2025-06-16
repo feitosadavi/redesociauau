@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import DefaultLayout from "@/app/@components/Layouts/DefaultLaout";
 import React from "react";
 import { POSTAGENS_API } from "@/api";
+import Postagem from "./@components/Postagem";
 
 export const metadata: Metadata = {
   title:
@@ -16,8 +17,8 @@ export default async function Home() {
     <>
       <DefaultLayout>
         <div className="flex items-center justify-center flex-col">
-          {postagens.map(({ _id }) => (
-            <div key={_id}>sdf</div>
+          {postagens.map(({ _id, ...postagem }) => (
+            <Postagem key={_id} postagem={{ _id, ...postagem }} />
           ))}
         </div>
         {/* <ECommerce /> */}
