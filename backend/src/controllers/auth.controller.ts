@@ -47,7 +47,7 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-export const me = async (req: Request, res: Response) => {
+export const me = async (req: any, res: Response) => {
   try {
     const user = await prisma.usuario.findUnique({
       where: { id_usuario: req.user.id_usuario },
